@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+<head>
+<meta charset="utf-8">
+
+<title>Resumen Compra</title>
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container mt-4">
+	<a th:href="@{/listarPedidoItem}" class="btn btn-secondary">Regresar</a>
+	<br> <br>
+		<table class="table" >
+			<thead>
+				<tr>
+					<th>Nombre Producto</th>
+					<th>Precio Unitario</th>
+					<th>Cantidad Comprada</th>
+					<th>Sub Total</th>
+					<th>IVA 12%</th>
+					<th>Total</th> 	
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="productos:${productos}" >
+					<td th:if="${productos.ProductoID} == ${pedidoitem.ProductoID}" 
+					th:text="${productos.NombreProducto}"></td>
+					<td th:if="${productos.ProductoID} == ${pedidoitem.ProductoID}" 
+					th:text="${productos.Precio}"></td>
+					<td th:if="${productos.ProductoID} == ${pedidoitem.ProductoID}" 
+					th:text="${pedidoitem.Cantidad}"></td>
+					<td th:if="${productos.ProductoID} == ${pedidoitem.ProductoID}" 
+					th:with="subtotal=${productos.Precio * pedidoitem.Cantidad}"
+					th:text="${subtotal}"></td>
+					<td th:if="${productos.ProductoID} == ${pedidoitem.ProductoID}" 
+					th:with="iva=${productos.Precio * pedidoitem.Cantidad}*0.12"
+					th:text="${iva}"></td>
+					<td th:if="${productos.ProductoID} == ${pedidoitem.ProductoID}" 
+					th:with="total=(${productos.Precio * pedidoitem.Cantidad}*0.12)+${productos.Precio * pedidoitem.Cantidad}"
+					th:text="${total}"></td>
+					
+				</tr>
+			</tbody>
+		</table>
+		
+
+	</div>
+<script src="https://code.jquery.com/jquery-3.6.0.js"> </script>	
+<script src = "https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script> 
+<script src="js/funciones.js"></script>
+</body>
+</html>

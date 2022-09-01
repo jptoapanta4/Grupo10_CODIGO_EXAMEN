@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+<head>
+<meta charset="utf-8">
+
+<title>Pedidos Item</title>
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container mt-4">
+	<a th:href="@{/newPedidoItem}" class="btn btn-primary">Nuevo</a>
+	<a th:href="@{/listarPedido}" class="btn btn-primary">Regresar</a>
+	<br> <br>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>ID Pedido</th>
+					<th>Producto</th>
+					<th>Cantidad</th>
+					<th>Acciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="pedidositems:${pedidositems}">
+					<td th:text="${pedidositems.PedidoID}"></td>
+					<td th:each="productos:${productos}" th:if="${productos.ProductoID} == ${pedidositems.ProductoID}" 
+					th:text="${productos.NombreProducto}"></td>
+					<td th:text="${pedidositems.Cantidad}"></td>
+					<td>
+						<a th:href="@{/resumen/}+${pedidositems.PedidoItemID}" class="btn btn-success">Resumen Compra</a>
+						<a th:href="@{/editarPedidoItem/}+${pedidositems.PedidoItemID}" class="btn btn-warning">Editar</a>
+						<!--<a th:onclick="eliminarPedidoItem([[${pedidositems.PedidoItemID}]])" class="btn btn-danger">Eliminar</a>-->
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+<script src="https://code.jquery.com/jquery-3.6.0.js"> </script>	
+<script src = "https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script> 
+<script src="js/funciones.js"></script>
+</body>
+</html>

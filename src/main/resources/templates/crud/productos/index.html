@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="utf-8">
+
+<title>Pedidos</title>
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container mt-4">
+	<a sec:authorize="hasRole('ADMIN')" th:href="@{/newProducto}" class="btn btn-primary">Nuevo</a>
+	<a th:href="@{/home}" class="btn btn-primary">Home</a>
+	<br> <br>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>NOMBRE</th>
+					<th>PRECIO</th>
+					<th>STOCK</th>
+					<th sec:authorize="hasRole('ADMIN')">ACCIONES</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="productos:${productos}">
+					<td th:text="${productos.NombreProducto}"></td>
+					<td th:text="${productos.Precio}"></td>
+					<td th:text="${productos.Stock}"></td>
+					<td sec:authorize="hasRole('ADMIN')">
+						<a th:href="@{/detalleProducto/}+${productos.ProductoID}" class="btn btn-primary">Detalles</a>
+						<a th:href="@{/editarProducto/}+${productos.ProductoID}" class="btn btn-primary">Editar</a>
+						<a th:onclick="eliminarProducto([[${productos.ProductoID}]])" class="btn btn-danger">Eliminar</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+<script src="https://code.jquery.com/jquery-3.6.0.js"> </script>	
+<script src = "https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script> 
+<script src="js/funciones.js"></script>
+</body>
+</html>
