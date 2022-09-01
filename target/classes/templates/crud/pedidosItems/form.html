@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+<head>
+<meta charset="utf-8">
+<title>Agregar Pedido Item</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+</head>
+<body>
+	<div class="container mt-4">
+		<div class="col-sm-6">
+			<form th:action="@{/savePedidoItem}" th:object=${pedidoitem} method="POST" id="form_compra">
+				<div class="card">
+					<div class="card-header">
+						<h3>Módulo Pedido Item</h3>
+					</div>
+					<div class="card-body">
+						<div class="form-group">
+							<input th:field="*{PedidoItemID}" type="hidden" class="form-control" />
+						</div>
+						<div class="form-group">
+							<label>Pedido ID</label>
+							<div>
+								<select th:field="*{PedidoID}" class="form-control">
+									<option th:each="pedidos:${pedidos}" th:text="${pedidos.PedidoID}"
+										th:value="${pedidos.PedidoID}">
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label>Producto</label>
+							<div>
+								<select th:field="*{ProductoID}" class="form-control">
+									<option th:each="productos:${productos}" th:text="${productos.NombreProducto}"
+										th:value="${productos.ProductoID}">
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label>Cantidad</label> 
+							<input th:field="*{Cantidad}" type="number"
+								class="form-control" />
+						</div>
+					</div>
+					<div class="card-footer">
+						<input type="button" onclick="pregunta()" value="Guardar" class="btn btn-success" />
+					</div>
+				</div>
+			</form>
+		</div>
+
+	</div>
+	
+	<script src="https://code.jquery.com/jquery-3.6.0.js"> </script>	
+<script src = "https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script> 
+<script src="js/funciones.js"></script>
+
+</body>
+</html>

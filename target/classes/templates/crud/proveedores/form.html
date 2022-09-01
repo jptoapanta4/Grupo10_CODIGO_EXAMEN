@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+<head>
+<meta charset="utf-8">
+<title>Agregar Proveedor</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container mt-4">
+		<div class="col-sm-6">
+			<form th:action="@{/saveProveedor}" th:object=${proveedor} method="POST">
+				<div class="card">
+					<div class="card-header">
+						<h3>Módulo Proveedor</h3>
+					</div>
+					<div class="card-body">
+						<div class="form-group">
+							<input th:field="*{codigo_proveedor}" type="hidden" class="form-control" />
+						</div>
+						<div class="form-group">
+							<label>Nombre:</label>
+							<input th:field="*{nombre_proveedor}" type="text" class="form-control"/>
+						</div>
+						<div class="form-group">
+							<label>Ciudad:</label>
+							<input th:field="*{ciudad}" type="text" class="form-control"/>
+						</div>
+						<div class="form-group">
+							<label>Estado:</label>
+							<input th:field="*{estado}" type="number" min="0" max="1" class="form-control"/>
+						</div>
+						<div class="form-group">
+							<label>Email:</label>
+							<input th:field="*{Email}" type="email" class="form-control"/>
+						</div>
+					</div>
+					<div class="card-footer">
+						<input type="submit" value="Guardar" class="btn btn-success"/>
+					</div>
+				</div>
+			</form>
+		</div>
+
+	</div>
+
+</body>
+</html>

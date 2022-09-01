@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login</title>
+
+    <!--JQUERY-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    
+    <!-- Los iconos tipo Solid de Fontawesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+    <!-- Nuestro css-->
+    <!--<link rel="stylesheet" type="text/css" href="static/css/index.css" th:href="@{/css/index.css}">-->
+
+</head>
+<body class="m-0 row justify-content-center">
+	<div class="col-auto p-5 text-center">
+			<h2>TIENDA VIRTUAL - GRUPO 10</h2>
+       
+                <form class="col-12" th:action="@{/login}" method="post">
+                <div class="form-outline mb-4" id="user-group">
+                	<label class="form-label" for="form2Example1">Usuario</label>
+				    <input type="text" id="form2Example1" class="form-control" name="username"/>
+				    
+				  </div>
+				  <div class="form-outline mb-4" id="contrasena-group">
+				  	<label class="form-label" for="form2Example2">Contraseña</label>
+				    <input type="password" id="form2Example2" class="form-control" name="password"/>
+				    
+				  </div>
+				  <div class="row mb-4">
+				    <div class="col d-flex justify-content-center">
+				      <!-- Checkbox -->
+				      <div class="form-check">
+				        <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
+				        <label class="form-check-label" for="form2Example31"> Recuerdame </label>
+				      </div>
+				    </div>
+				
+				    <div class="col">
+				      <!-- Simple link -->
+				      <a href="#!">Olvidó su contraseña?</a>
+				    </div>
+				  </div>
+				  <button type="submit" class="btn btn-primary btn-block mb-4">Ingresar</button>
+                    <!--<button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>  Ingresar </button>-->
+                    <!-- Register buttons -->
+					  <div class="text-center">
+					    <p>No es miembro? <a href="#!">Registrarse</a></p>
+					    <p>o inicie sesión con:</p>
+					    <button type="button" class="btn btn-link btn-floating mx-1">
+					      <i class="fab fa-facebook-f"></i>
+					       &nbsp;
+					      <i class="fab fa-google"></i>
+					      &nbsp;
+					      <i class="fab fa-twitter"></i>
+					      &nbsp;
+					      <i class="fab fa-github"></i>
+					    </button>
+					  </div>
+                </form>
+                <div th:if="${param.error}" class="alert alert-danger" role="alert">
+		           Nombre de usuario o contraseña incorrecta.
+		        </div>
+		        <div th:if="${param.logout}" class="alert alert-success" role="alert">
+		            Cerrado Sesión con ÉXITO!
+		        </div>
+</div>
+</body>
+</html>

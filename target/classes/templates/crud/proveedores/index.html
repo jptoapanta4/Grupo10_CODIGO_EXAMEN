@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+<head>
+<meta charset="utf-8">
+
+<title>Proveedores</title>
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container mt-4">
+	<a th:href="@{/newProveedor}" class="btn btn-primary">Nuevo</a>
+	<a th:href="@{/home}" class="btn btn-primary">Home</a>
+	<br> <br>
+		<table class="table">
+		<thead>
+			<tr>
+				<th>NOMBRE</th>
+				<th>CIUDAD</th>
+				<th>ESTADO</th>
+				<th>EMAIL</th>
+				<th>ACCIONES</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="proveedor:${proveedores}">
+				<td th:text="${proveedor.nombre_proveedor}"></td>
+				<td th:text="${proveedor.ciudad}"></td>
+				<td th:text="${proveedor.estado}"></td>
+				<td th:text="${proveedor.Email}"></td>
+				<td>
+				<a th:href="@{/editarProveedor/}+${proveedor.codigo_proveedor}" class="btn btn-primary">Editar</a>
+				<a th:onclick="eliminarProveedor([[${proveedor.codigo_proveedor}]])" class="btn btn-danger">Eliminar</a>
+				
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	</div>
+<script src="https://code.jquery.com/jquery-3.6.0.js"> </script>	
+<script src = "https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script> 
+<script src="js/funciones.js"></script>
+</body>
+</html>

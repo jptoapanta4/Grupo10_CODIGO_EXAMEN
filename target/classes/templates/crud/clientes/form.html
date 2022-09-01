@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+<head>
+<meta charset="utf-8">
+<title>Agregar Cliente</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container mt-4">
+		<div class="col-sm-6">
+			<form th:action="@{/saveCliente}" th:object=${cliente} method="POST">
+				<div class="card">
+					<div class="card-header">
+						<h3>Módulo Cliente</h3>
+					</div>
+					<div class="card-body">
+						<div class="form-group">
+							<input th:field="*{ClienteID}" type="hidden" class="form-control" />
+						</div>
+						<div class="form-group">
+							<label>Razón Social</label>
+							<input th:field="*{RazonSocial}" type="text" class="form-control" />
+						</div>
+						<div class="form-group">
+							<label>Direccion</label>
+							<input th:field="*{Direccion}" type="text" class="form-control" />
+						</div>
+						<div class="form-group">
+							<label>Ciudad</label>
+							<input th:field="*{Ciudad}" type="text" class="form-control" />
+						</div>
+						<div class="form-group">
+							<label>Estado</label>
+							<input th:field="*{Estado}" type="text" class="form-control" />
+						</div>
+						<div class="form-group">
+							<label>Código Postal</label>
+							<input th:field="*{CodigoPostal}" type="text" class="form-control" />
+						</div>
+						<div class="form-group">
+							<label>Rif</label>
+							<input th:field="*{Rif}" type="text" class="form-control" />
+						</div>
+						<div class="form-group">
+							<label>País</label>
+							<input th:field="*{Pais}" type="text" class="form-control" />
+						</div>
+						<div class="form-group">
+							<label>Teléfonos</label>
+							<input th:field="*{Telefonos}" type="text" class="form-control" />
+						</div>
+					</div>
+					<div class="card-footer">
+						<input type="submit" value="Guardar" class="btn btn-success"/>
+					</div>
+				</div>
+			</form>
+		</div>
+
+	</div>
+
+</body>
+</html>
